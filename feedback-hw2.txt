@@ -1,0 +1,144 @@
+;; _total-score_                   78 / 100
+
+;; graded by arjunrawal4
+;; Week 2 assignment
+;; === automated correctness ===
+
+;;print_asterisk_letter	5/5
+	input_char S	1/1
+	input_char T	1/1
+	input_char U	1/1
+	input_char V	1/1
+	input_char W	1/1
+
+;;draw_hourglass_rec	0/10
+	height 3	0/7
+	not yet implemented
+	height 4	0/3
+VISUAL INSPECTION
+Expected: 
+***
+ *
+ *
+***
+Actual: 
+*****
+ ***
+  *
+ ***
+*****
+
+
+;;draw_hourglass_iter	0/10
+	height 3	0/7
+Expected:
+***
+ *
+***
+Actual:
+***
+  *
+***
+
+	height 4	0/3
+Expected:
+***
+ *
+ *
+***
+Actual:
+*****
+ ***
+ ***
+*****
+
+;;extract_digit	3/5
+	guess 1534, digit 2,5	2/2
+	guess 1534, digit 1,1	0/2
+	result: 1, expected: 3
+	guess 1634, digit 5,	1/1
+
+;;num_of_color	10/10
+	pattern 1534, color 3,	2/2
+	pattern 1634, color 4,	2/2
+	pattern 1441, color 4,	2/2
+	pattern 6234, color 6,	2/2
+	pattern 1131, color 1,	2/2
+
+;;count_exact_matches	10/10
+	guess 2415, solution 1425,	2/2
+	guess 2415, solution 3636,	2/2
+	guess 2445, solution 2451,	2/2
+	guess 2435, solution 6416,	2/2
+	guess 2435, solution 5342,	2/2
+
+;;count_color_matches	5/5
+	guess 2415, solution 1425,	1/1
+	guess 2415, solution 3636,	1/1
+	guess 2445, solution 2451,	1/1
+	guess 2435, solution 6416,	1/1
+	guess 2435, solution 5342,	1/1
+
+;;get_guess_feedback	8/10
+	guess 2415, solution 1425,	2/2
+	guess 2445, solution 2451,	2/2
+	guess 2435, solution 6416,	2/2
+	guess 2435, solution 5342,	2/2
+	guess 7642, solution 5343,	0/1
+Expected:
+7642 is an invalid guess. Make sure your guess is a 4-digit number, each digit between 1-6.
+Actual:
+
+
+	guess 42, solution 5344,	0/1
+Expected:
+42 is an invalid guess. Make sure your guess is a 4-digit number, each digit between 1-6.
+Actual:
+
+
+
+;;play_mastermind	10/10
+	guesses 1	4/4
+	guesses 2	4/4
+	guesses 12	2/2
+ ;; automated_correctness_subtotal_:		51/75
+
+
+;; === 
+;; partial credit returned via visual inspection - only for
+;; problems on which you earned fewer points than you can get back.
+;; if you got more than 0 points, then the partial credit is scaled.
+;; look at code for grader notes if bugs identified
+
+;; draw_hourglass_rec	-   
++2 - draws something hourglass-ish in a recursive manner
+				
+;; draw_hourglass_iter	-   / 
++2 - draws something hourglass-ish in a recursive manner
+
+				
+;; play_mastermind
+
+-1 - minor mismatch that involves using a different printf than provided
+
+;; manual_correctness_subtotal_:	    5 / 5
+
+;; combined_correctness_subtotal_:	    56 / 75
+
+;; === style ===
+
+;; well-written purposes              4 / 4
+;; proper indentation, line breaks    4 / 4
+;; well-named variables		     3 / 4
+using a lot of unclear names like n,g,rv
+;; adequate tests                    8 / 8
+
+;; === efficiency ===
+;; good decisions for control structures 3 / 5
+ -2 - inappropriate control structure (if/else where switch should have been)
+print_asterisk_letter
+
+;; style _subtotal_:		   22 / 25
+
+;; graded by Arjun Rawal
+

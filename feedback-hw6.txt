@@ -1,0 +1,174 @@
+;; _total-score_                   94 / 100
+
+;; Week 6 Assignment
+
+;; === automated correctness ===
+
+                                   TESTING LISTS
+product_info struct: {Name, Category, productID, current_stock, min_for_restock, max_after_restock}
+Note: In each column, top item is head of list (index 0) and bottom item is end of list
+
+test_list/restock_list_1
+{Sugar, Grocery, 571, (test_list = 7/ restock_list_1 = 3), 4, 8}
+{Printer, Office, 8112, 8, 6, 16)}
+{Pen, Office, 10000, (test_list = 20/ restock_list_1 = 0), 10, 35}
+{Chocolate, Grocery, 92622,7,4,8}
+{1-Milk, Grocery, 23765, (test_list = 17/ restock_list_1 = 6), 10, 30}
+
+restock_list_2
+
+{VPN router, Office,380571, 3, 4, 8}
+{Soylent, Hobby, 9657, 2, 6, 16}
+{Inhaler, Pharmacy, 3898, 0, 10, 35}
+{Protein, Grocery, 4545,4,4,8}
+{Chocolate, Grocery, 92622,7,4,8}
+
+
+;; create_product                8.0 / 8
+{1-Milk, Grocery, 23765, 17, 10, 30} => CORRECT
++ 3.0 / 3.0
+{Advil, Pharmacy, 92622, 7, 4, 8} => CORRECT
++ 3.0 / 3.0
+{Printer, Office, 8112, 8, 6, 16} => CORRECT
++ 2.0 / 2.0
+
+;; insert_head                8.0 / 8
+inserting {Vitamins, Pharmacy, 10, 7, 4, 8} in to test_list => CORRECT
++ 4.0 / 4.0
+inserting {Drone, Hobby, 19, 9, 4, 25} in to test_list => CORRECT
++ 4.0 / 4.0
+
+;; find                8.0 / 8
+finding product with ID: 10000 in test_list =>  CORRECT
++ 5.0 / 5.0
+finding product with ID: 23765 in test_list =>  CORRECT
++ 2.0 / 2.0
+finding product with ID: 12345 in test_list =>  CORRECT
++ 1.0 / 1.0
+
+;; record_restocked_single                5.0 / 5
+restocking product with ID: 8112 in test_list =>  CORRECT
++ 3.0 / 3.0
+restocking product with ID: (empty list) in in test_list =>  CORRECT
++ 1.0 / 1.0
+restocking product with ID: 12345 in test_list =>  CORRECT
++ 1.0 / 1.0
+
+;; product_sold                        5.0 / 5
+selling product with ID: 8112 in test_list =>  CORRECT
++ 3.0 / 3.0
+selling product with ID: (empty list) in test_list =>  CORRECT
++ 1.0 / 1.0
+selling product with ID: 12345 in test_list =>  CORRECT
++ 1.0 / 1.0
+
+;; add_sorted_productID                        7.0 / 8
+adding product with ID: 10 in test_list =>  CORRECT
++ 3.0 / 3.0
+adding product with ID: 92621 in test_list =>  CORRECT
++ 3.0 / 3.0
+adding product with ID: NULL_product in test_list => INCORRECT: Segmentation fault
++ 0.0 / 1.0
+adding product with ID: empty_list in test_list =>  CORRECT
++ 1.0 / 1.0
+
+;; add_sorted_category_ID                        7.0 / 8
+adding product with (ID, category): (4544, GROCERY) in SORTED restock_list_2 =>  CORRECT
++ 3.0 / 3.0
+adding product with (ID, category): (380572, OFFICE) in SORTED restock_list_2 =>  CORRECT
++ 3.0 / 3.0
+adding product with (ID, category): (NULL, NULL) in SORTED restock_list_2 => INCORRECT: Segmentation fault
++ 0.0 / 1.0
+adding product with (ID, category): (empty_list, empty_list) in SORTED restock_list_2 =>  CORRECT
++ 1.0 / 1.0
+
+;; make_restock_list                        6.0 / 10
+Making restock list for restock_list_1 =>  CORRECT
++ 4.0 / 4.0
+Making restock list for restock_list_2 =>  INCORRECT:
+Student Output: Soylent (9657) Hobby: current: 2, min: 6, max: 16
+Inhaler (3898) Pharmacy: current: 0, min: 10, max: 35
+VPN router (380571) Office: current: 3, min: 4, max: 8
+Protein (4545) Grocery: current: 4, min: 4, max: 8
+
+Correct Output: Inhaler -> Soylent -> VPN router
+
++ 0.0 / 4.0
+Making restock list for NULL =>  CORRECT
++ 2.0 / 2.0
+
+;; record_restocked_list                        10.0 / 10
+Recording restock list for restock_list_1 =>  CORRECT
++ 4.0 / 4.0
+Recording restock list for restock_list_2 =>  CORRECT
++ 4.0 / 4.0
+Recording restock list for NULL_restock_list =>  CORRECT
++ 1.0 / 1.0
+Recording restock list for empty_list =>  CORRECT
++ 1.0 / 1.0
+
+;; automated_correctness_subtotal_:             64.0 / 70
+
+;; === 
+;; partial credit returned via visual inspection - only for
+;; problems on which you earned fewer points than you can get back.
+;; if you got more than 0 points, then the partial credit is scaled.
+;; look at code for grader notes if bugs identified
+
+;; create_product / 8
++6 - Works, but some unsigned int field of product_info is wrong due to a typo
++4 - Works, but name is not copied correctly
+
+;; insert_head / 8
++6 - The node is created and inserted as the head, but returns a wrong node. 
++4 - A node is created, but is inserted incorrectly or into the wrong position. 
+
+;; find / 8
++4 - The code is basically correct, but it does not return the correct record due to some typo.   
+
+;; record_restocked_single / 5
++2 finds the record but does not update the record correctly
+
+;; product_sold / 5
++2 finds the record but does not update the record correctly
+
+;; add_sorted_productID / 8
++6 find the correct position but not insert correctly
++3 the comparison is right, but failed to find the correct position
+
+;; add_sorted_category_ID / 8
++6 find the correct position but not insert correctly
++3 the comparison is right, but failed to find the correct position
+
+;; make_restock_list / 10 
++8 the restock linked list has been created but not returned correctly
++5 the code is almost correct, but has some typo in it (maybe compared 
+to the wrong field, or returned a wrong pointer) so the final result is not right. 
+
+;; record_restocked_list / 10 
++5 iterated the linked list correctly, but failed to updat them correctly
+
+;; automated_correctness_subtotal:	    64/70 
+
+
+;; === style ===
+
+;; well-written purposes             4 / 4
+;; proper indentation, line breaks   4 / 4
+;; well-named variables		     4 / 4
+;; adequate tests                    6 / 6
+Do they have a testing script with the command lines for tests?
+Do they have good tests?
+
+;; === efficiency ===
+;; good decisions for control structures 6 / 6
+ -3 - repeated function calls with same input and same result
+ -3 - very long function call that should have been broken up (> 40 lines)
+
+;; cushion for grading errors		6 / 6	
+;; regrade requests will only be accepted of the 
+;; change is worth more than 6 pts
+
+;; style _subtotal_:		   30 / 30
+
+;; graded by miaohe

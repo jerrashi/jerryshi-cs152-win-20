@@ -1,0 +1,150 @@
+;; _total-score				91 / 100
+
+;; Week 7 Assignment
+
+;; === automated correctness===
+
+Note: Some functions depend on other functions. For example, if
+your create_bst does not work, then we may not be able to test
+any other function properly
+
+;; memory_addr_cmp				6.0 / 6
+x->addr < y->addr, size is same:  CORRECT
++ 2.0 / 2.0
+x->addr == y->addr, size is different:  CORRECT
++ 2.0 / 2.0
+x->addr > y->addr, size is same:  CORRECT
++ 2.0 / 2.0
+
+;; memory_size_cmp				6.0 / 6
+x->size < y->size, same addr:  CORRECT
++ 2.0 / 2.0
+x->size == y->size, different addr:  CORRECT
++ 2.0 / 2.0
+x->size > y->size, same addr:  CORRECT
++ 2.0 / 2.0
+
+;; node_new				2.0 / 2
+ CORRECT
++ 2.0 / 2.0
+
+;; bst_new				2.0 / 2
+ CORRECT
++ 2.0 / 2.0
+
+;; search				0.0 / 10
+Find at root:  INCORRECT, Returns Node instead of data
++ 0.0 / 1.0
+Find at child of root:  INCORRECT, Returns Node instead of data
++ 0.0 / 2.0
+Find in middle:  INCORRECT, Returns Node instead of data
++ 0.0 / 5.0
+Find not in tree:  INCORRECT: Segmentation fault
++ 0.0 / 2.0
+
+;; insert				10.0 / 10
+Insert to empty tree:  CORRECT
++ 2.0 / 2.0
+Insert root's child:  CORRECT
++ 3.0 / 3.0
+Insert middle item:  CORRECT
++ 5.0 / 5.0
+
+;; delete				8.0 / 10
+Delete leaf:  CORRECT
++ 2.0 / 2.0
+Delete node with left child:  CORRECT
++ 3.0 / 3.0
+Delete node with right child:  CORRECT
++ 3.0 / 3.0
+Delete node with 2 children:  INCORRECT, Invalid ordering of nodes
++ 0.0 / 2.0
+
+;; inorder_traversal				5.0 / 5
+Tree with 3 nodes:  CORRECT
++ 3.0 / 3.0
+Asymmetric tree:  CORRECT
++ 2.0 / 2.0
+
+;; read_memory_blocks				10.0 / 10
+Test small list:  CORRECT
++ 5.0 / 5.0
+Test long list:  CORRECT
++ 5.0 / 5.0
+
+
+;; automated_correctness_subtotal_:				49.0 / 61
+
+;; if necessary, 10 pt charge for grader manually
+;; getting code to run (as long as it was student error)
+
+;; ===
+;; partial credit returned via visual inspection - only for
+;; problems on which you earned fewer points than you can get back.
+;; if you got more than 0 points, then the partial credit is scaled.
+;; look at code for grader notes if bugs identified
+
+
+;; search						3 / 3
+If they only got 2 pts, but they have complete but incorrect
+code for the entire find, they get 3 more for a total of 5.
+
+;; insert
+If they only got 2 pts, but they have complete but incorrect
+code for the entire insert, they get 3 more for a total of 5.
+For example, they call the recursive call, create the new
+node, but they don't hook the new node onto the old node.
+
+;; delete
+If they only got 2 pts, but they have complete but incorrect
+code for the entire delete, they get 3 more for a total of 5.
+
+;; inorder traversal
+If they have a traversal, just the wrong order, then +3
+
+;; only for items incorrect in automated grading
+;; manual_correctness_subtotal_:	     3 / 12
+
+;; combined_correctness_subtotal_:	    52 / 61
+
+;; === style / communication with other programmers ===
+;; well-written purposes              			2 / 2
+;; proper indentation, line breaks    			2 / 2
+;; well-named variables	   				2 / 2
+;; easy to follow code					2 / 2
+;; separation of abstract data type			6 / 6
+ (all or nothing)
+This means: They, at no time, show any evidence that the code in
+the bst knows what is being held in the tree. They faithfully use
+only the cmp functions to compare the void* in the tree.
+use of memory within bst.c - -4
+use of bstnode outside of bst.c - -4
+(max of 6 taken off)
+
+;; === testing ===
+;; adequate & well-designed tests         		4 / 4
+(3 tests for each function - no testing methodology specified,
+so allow any style of testing. A single "test" may test multiple functions.)
+
+;; === efficiency ===
+;; good decisions for control structures 		3 / 3
+ -2 - inappropriate control structure
+ -2 - repeated function calls with same input and same result
+ -2 - recursion that is very hard to follow
+ -2 - everything logically makes sense - no useless steps
+(max of 3 taken off)
+
+;; memory						13 / 13
+new_node- creates space for node			+ 3
+bst_new - creates space for bst				+ 3
+free_bst - free node					+ 3
+free_bst - free subtrees				+ 3
+free_bst - free node *after* freeing subtrees		+ 1
+
+;; 5 pt grading inaccuracy cushion	5/5
+All students get a 5 pt bonus for grading inaccuracy. We will
+only take regrade requests for mistakes worth more than 5 points.
+
+;; style _subtotal_:		   39 / 39
+
+;; graded by miaohe

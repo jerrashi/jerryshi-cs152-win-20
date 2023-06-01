@@ -1,0 +1,131 @@
+;; _total-score_                   99 / 100
+Great Job!
+
+;; graded by miaohe
+;; Week 4 assignment
+;; === automated correctness ===
+
+;;count_vowels	7/7
+	str bcd	1/1
+	str ubbbb	1/1
+	str ffffe	1/1
+	str sprites	2/2
+	str blackboard	2/2
+
+;;make_lowercase	8/8
+	str abcde	1/1
+	str Banana	1/1
+	str boyeR	2/2
+	str spOnGebob	2/2
+	str SHOUTING	2/2
+
+;;make_horizontal_stripes	10/10
+	test_case 0	2/2
+	test_case 1	2/2
+	test_case 2	2/2
+	test_case 3	2/2
+	test_case 4	1/1
+	test_case 5	1/1
+
+;;make_checker_board	10/10
+	test_case 0	2/2
+	test_case 1	2/2
+	test_case 2	2/2
+	test_case 3	2/2
+	test_case 4	1/1
+	test_case 5	1/1
+
+;;hide_image	15/15
+	test_case 0	3/3
+	test_case 1	3/3
+	test_case 2	3/3
+	test_case 3	3/3
+	test_case 4	3/3
+
+;;extract_image	15/15
+	test_case 0	3/3
+	test_case 1	3/3
+	test_case 2	3/3
+	test_case 3	3/3
+	test_case 4	3/3
+
+;;encode	5/5
+	test_case 0	1/1
+	test_case 1	1/1
+	test_case 2	1/1
+	test_case 3	1/1
+	test_case 4	1/1
+
+;;decode	5/5
+	test_case 0	1/1
+	test_case 1	1/1
+	test_case 2	1/1
+	test_case 3	1/1
+	test_case 4	1/1
+
+ ;; automated_correctness_subtotal_:		75/75
+;; === 
+;; partial credit returned via visual inspection - only for
+;; problems on which you earned fewer points than you can get back.
+;; if you got more than 0 points, then the partial credit is scaled.
+;; look at code for grader notes if bugs identified
+
+;; count_vowels				/ 4
+Off-by-one error - a systemic error that affects almost all
+tests, but is a really small error.
+
+;; make_lowercase			/ 4
+Off-by-one error - a systemic error that affects almost all
+tests, but is a really small error.
+
+For stripes & board - These are only if all of their other tests failed
+in order to give partial credit for something not expressed in the tests
+;; make_horizontal_stripes		/ 8
++8 - Works, only gets a color component incorrect
++5 - makes something stripish but not quite right
+
+;; make_checker_board			/ 8
++8 - Works, only gets a color component incorrect
++5 - makes something checkerboardish but not quite right
+
+
+;; hiding secrets			/ 10
++10 - hides part of the picture properly. Sample errors could be 
+that it retains a small bit of the reference picture or it is 
+turned on its side.
+
+;; extracting secrets			/ 10
++10 - hides part of the picture properly. Sample errors could be 
+that it retains a small bit of the reference picture, it is 
+turned on its side, or it's all a bit red.
+
+;; manual_correctness_subtotal_:	     / 41
+
+;; combined_correctness_subtotal_:	    75 / 75
+
+;; === style ===
+
+;; well-written purposes             5 / 5
+;; proper indentation, line breaks   4 / 5
+Grader comments: -1 for lines > 80 characters in warmup4_main.c
+
+;; well-named variables		     5 / 5
+;; adequate tests                    5 / 5
+Testing: look for tests with different filenames.
+If they used command-line arguments, look for testscript.
+You may need to look in student's original repository - it may not
+all be copied over. They don't need to test encode and decode individually-
+can do the whole shebang. Don't TRY to take points off - just if you 
+can't find evidence of good testing methodology.
+
+;; === efficiency ===
+;; good decisions for control structures 5 / 5
+ -2 - inappropriate control structure (if/else where switch should have been)
+ -2 - repeated function calls with same input and same result
+
+;; === problem-specific requirements === 
+
+;; style _subtotal_:		   24 / 25
+
+;; graded by miaohe
+

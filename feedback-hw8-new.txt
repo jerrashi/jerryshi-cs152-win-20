@@ -1,0 +1,169 @@
+;; _total-score_                    / 100
+
+;; Week 8 - 9 Assignment
+
+;; === automated correctness ===
+
+
+;; memory_addr_cmp                6.0 / 6
+{addr: 15, size: 5} < {addr: 19, size: 5} =>  CORRECT
++ 2.0 / 2.0
+{addr: 243, size: 44} == {addr: 243, size: 440} =>  CORRECT
++ 2.0 / 2.0
+{addr: 189, size: 54} > {addr: 19, size: 54} =>  CORRECT
++ 2.0 / 2.0
+
+;; allocate_memory_page                6.0 / 6
+(VISUAL INSPECTION) => 
++ 6.0 / 6.0
+
+;; split_memory                10.0 / 10
+split addr/256 into addr/128 and addr/120 (split off 128) =>  CORRECT
++ 4.0 / 4.0
+split addr/120 into addr/24 and addr/88 (split off 24) =>  CORRECT
++ 4.0 / 4.0
+REPLACEMENT TEST my_malloc(9) => CORRECT
++ 2.0 / 2.0
+
+;; bst_iterate                3.0 / 10
+Returns pointer to first node =>  CORRECT
++ 3.0 / 3.0
+Returns pointer to every node (perhaps not in order) => FAIL: Segmentation fault
++ 0.0 / 3.0
+Returns pointers in order =>  INCORRECT: Iterator does not point to every node in order
+Missing/out of order item: 2
+
++ 0.0 / 2.0
+Returns NULL at the end => FAIL: Operation timed out (probable infinite loop)
++ 0.0 / 2.0
+
+;; init_alloc                        5.0 / 5
+avail_mem points somewhere =>  CORRECT
++ 3.0 / 3.0
+root is NULL =>  CORRECT
++ 2.0 / 2.0
+
+;; bst/node_item_or_successor                        5.0 / 5
+Using bst with nodes of size: 120, 256, 512, 1024
+finds node equal to request (512) =>  CORRECT
++ 3.0 / 3.0
+finds next larger node to request (576) (when equal isn’t there) =>  CORRECT
++ 2.0 / 2.0
+
+;; my_malloc                        8.0 / 8
+Request 88 bytes =>  CORRECT
++ 4.0 / 4.0
+Request 40 bytes, then 48 bytes =>  CORRECT
++ 3.0 / 3.0
+Size recorded 8 bytes before returned pointer =>  CORRECT
++ 1.0 / 1.0
+
+;; my_free                        0.0 / 10
+Reuses memory if chunk requested is equal to size already freed
+(request 80-> free-> request 80) =>  INCORRECT: Malloc did not reuse freed memory, original malloc location: 0x7f9f480025b0
+Student output (malloc after free): 0x7f9f48002558
+
++ 0.0 / 5.0
+Reuses memory if chunk requested is less than size already freed
+(request 88 -> free -> request 80) =>  INCORRECT: Malloc did not reuse freed memory, original malloc location: 0x7fde930025b0
+Student output (malloc after free): 0x7fde93002550
+Correct output: 0x7fde930025b8
+
++ 0.0 / 5.0
+
+;; compaction                        0.0 / 10
+reuses memory when asked for chunk equal to the sum of two contiguous freed items
+(request 120 -> request 120 -> free -> free -> compact -> request 240) => reuses memory when asked for chunk slightly smaller than the sum of two contiguous freed items
+(request 120 -> request 120 -> free -> free -> compact -> request 232) => 
+;; optimized delete                        5.0 / 5
+Deleting node 6 in test tree =>  CORRECT
++ 3.0 / 3.0
+Deleting node 7 in test tree =>  CORRECT
++ 2.0 / 2.0
+
+;; automated_correctness_subtotal_:             48.0 / 75
+
+;; if necessary, 10 pt charge for grader manually
+;; getting code to run (as long as it was student error)
+
+;; === 
+;; partial credit returned via visual inspection - only for
+;; problems on which you earned fewer points than you can get back.
+;; if you got more than 0 points, then the partial credit is scaled.
+;; look at code for grader notes if bugs identified
+
+
+;; allocate_memory_page				 / 6
++2 - calls malloc to allocate page
++2 - allocates memory struct
++1 - records addr/size
++1 - returns pointer to memory struct
+
+;; split_memory						/ 6
+(only give credit for parts they got off in correctness testing)
++2 - adjusts size properly
++2 - records new size in spot 8 bytes before new memory
++2 - provides pointer to new memory at correct spot
+
+;; bst_iterate						/ 6
+(only give credit back for portions that failed correctness testing)
++2 - has code trying to return pointer to first node
++2 - returns pointer to every node (perhaps not in order)
++1 - returns pointers in order
++1 - returns NULL at the end
+
+;; init_alloc						/ 3
++2 - avail_mem points somewhere
++1 - root is NULL
+
+;; my_malloc						/ 8
++2 - there is code to search through tree for size equal to item
++2 - there is code that splits off if size is too big
++1 - there is code to round up to 8 bytes
++1 - there is code to remove that struct from but
++1 - there is code to record size
++1 - there is code to return pointer at right place
+
+;; my_free						/ 5
++5 - they place the item back in the tree
+
+;; compaction						/ 6
+// when the memory has all been allocated and freed with chunks of 120:
++2 - iterates through tree
++2 - attempts to figure out if two items are contiguous
++2 - attempts to join them (removing one from tree)
+
+
+
+;; only for items incorrect in automated grading
+;; manual_correctness_subtotal_:	     / 40
+
+;; combined_correctness_subtotal_:	     / 75
+
+;; === style / communication with other programmers ===
+;; well-written purposes              			/ 2
+;; proper indentation, line breaks    			/ 2
+;; well-named variables	   				/ 2
+;; easy to follow code	(line comments)				/ 5
+
+
+;; === testing ===
+;; adequate & well-designed tests         		/ 4
+(3 tests for each function - no testing methodology specified,
+so allow any style of testing. A single "test" may test multiple functions.)
+
+;; === efficiency ===
+;; good decisions for control structures 		/ 4
+ -2 - inappropriate control structure
+ -2 - repeated function calls with same input and same result
+ -2 - recursion that is very hard to follow
+ -2 - everything logically makes sense - no useless steps
+(max of 3 taken off)
+
+;; 5 pt grading inaccuracy cushion	5/5
+All students get a 5 pt bonus for grading inaccuracy. We will
+only take regrade requests for mistakes worth more than 5 points.
+
+;; style _subtotal_:		    / 25
+
+;; graded by GRADER'S_NAME_HERE

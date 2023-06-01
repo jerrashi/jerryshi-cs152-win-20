@@ -1,0 +1,11 @@
+./warmup5 0 1
+./warmup5 0 Hulu Netflix
+./warmup5 0 Bo Burnham
+
+./warmup5 1 1
+./warmup5 20 15
+./warmup5 50 50
+./warmup5 26 26
+
+./warmup5 2 100 50 0 128 128 test100x50gb.png
+./warmup5 2 200 500 128 0 128 test200x500rb.png

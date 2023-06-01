@@ -1,0 +1,137 @@
+;; _total-score				 58 / 100
+
+;; NOTE: you did not add hw5.c and hw5.h to your repo.
+
+;; Week 5 Assignment
+
+;; === automated correctness===
+
+;; === warmup ===
+
+;; safe_str_concat				10.0 / 10
+("a", "bcd"):
+Memory allocated:  CORRECT
++ 2.0 / 2.0
+Strings copied:  CORRECT
++ 3.0 / 3.0
+
+("Test ", "String"):
+Memory allocated:  CORRECT
++ 2.0 / 2.0
+Strings copied:  CORRECT
++ 3.0 / 3.0
+
+;; make_init_array				5.0 / 5
+Memory allocated:  CORRECT
++ 1.0 / 1.0
+Size initialized: 0  CORRECT
++ 2.0 / 2.0
+Array initialized:  CORRECT
++ 2.0 / 2.0
+
+;; write_value				10.0 / 10
+Array of 16 0s, index 16, value 10:
+Array reallocated:  CORRECT
++ 1.0 / 1.0
+Size updated: 32  CORRECT
++ 0.5 / 0.5
+Value written:  CORRECT
++ 0.5 / 0.5
+
+[5, 4, 3, 1], index 2, value 10:
+Value written:  CORRECT
++ 2.0 / 2.0
+
+Array of 16 1s, index 20, value 2:
+Array reallocated:  CORRECT
++ 2.0 / 2.0
+Size updated: 32  CORRECT
++ 1.0 / 1.0
+Elements copied:  CORRECT
++ 1.0 / 1.0
+Value written:  CORRECT
++ 2.0 / 2.0
+
+;; read_value				5.0 / 5
+[5, 4, 3, 1], index 3: 1  CORRECT
++ 4.0 / 4.0
+[5, 4, 3, 1], index 5: 0  CORRECT
++ 1.0 / 1.0
+
+;; make_and_init_image				10.0 / 10
+1x1 initialized to {1, 1, 1}:
+Memory allocated:  CORRECT
++ 3.0 / 3.0
+Colors correct: CORRECT
++ 2.0 / 2.0
+
+5x5 initialized to {1, 2, 3}:
+Memory allocated:  CORRECT
++ 3.0 / 3.0
+Colors correct: CORRECT
++ 2.0 / 2.0
+
+
+;; === hw ===
+
+;; make_empty_string				0.0 / 5
++ 0.0 Compile Failed
+
+;; make_string				0.0 / 5
++ 0.0 Compile Failed
+
+;; safe_str_cpy				0.0 / 10
++ 0.0 Compile Failed
+
+;; safe_str_cat				0.0 / 10
++ 0.0 Compile Failed
+
+;; safe_strchr				0.0 / 5
++ 0.0 Compile Failed
+
+;; safe_strcmp				0.0 / 5
++ 0.0 Compile Failed
+
+;; automated_correctness_subtotal_:				40.0 / 80
+
+
+;; ===
+;; partial credit returned via visual inspection - only for
+;; problems on which you earned fewer points than you can get back.
+;; if you got more than 0 points, then the partial credit is scaled.
+;; look at code for grader notes if bugs identified
+
+;; any systemic error that is off-by-one or something similar
+;; - restore all but 1 pt
+
+;; make_init_array: initializes array to [0]	/ 1
+;; - +1 pt
+
+;; compile error requiring manual fix		/ 0
+
+;; manual_correctness_subtotal_:	     /
+
+;; combined_correctness_subtotal_:	     40 / 80
+Grader note: I can't give you credits since there's nothing in your repo
+
+;; === style ==
+
+;; well-written purposes              2 / 2
+;; proper indentation, line breaks    1 / 3
+Grader note: Spaces or tabs but not both
+Grader note: In warmup5_main.c
+;; adequate tests                     5 / 5
+
+;; === efficiency ===
+;; good decisions for control structures 5 / 5
+
+;; === cushion ===
+5-pt bonus to all. Only regrades totaling more than
+5 pts will be considered
+					5 / 5
+
+;; === problem-specific requirements ===
+
+;; style _subtotal_:		    18 / 20
+
+;; graded by liuyifan

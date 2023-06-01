@@ -1,0 +1,55 @@
+1. Comment out #include <stdio.h> from errorwarmup1.c (place "//" before it)
+errorwarmup1.c:15:2: warning: implicitly declaring library function 'printf'
+      with type 'int (const char *, ...)' [-Wimplicit-function-declaration]
+        printf("Integer: %d\n",ival);
+        ^
+errorwarmup1.c:15:2: note: include the header <stdio.h> or explicitly provide a
+      declaration for 'printf'
+1 warning generated.
+
+
+2. Declare the same variable name twice
+errorwarmup1.c:54:13: error: redefinition of 'a'
+        int a = 6;
+            ^
+errorwarmup1.c:53:6: note: previous definition is here
+        int a = 4;
+            ^
+1 error generated.
+
+3. Remove a variable declaration
+errorwarmup1.c:52:16: error: use of undeclared identifier 'result'
+        return result;
+               ^
+1 error generated.
+
+
+4. Misspell a variable name or function name
+errorwarmup1.c:53:16: error: use of undeclared identifier 'reult'; did you mean
+      'result'?
+        return reult;
+               ^~~~~
+               result
+errorwarmup1.c:52:6: note: 'result' declared here
+        int result = ival*5;
+            ^
+1 error generated.
+
+
+5. Remove a closed curly brace
+errorwarmup1.c:113:1: error: expected '}'
+^
+errorwarmup1.c:86:1: note: to match this '{'
+{
+^
+1 error generated.
+
+
+6. Remove a semi-colon from the end of one of the lines
+errorwarmup1.c:97:32: error: expected ';' after expression
+        output = return_a_value(input)
+                                      ^
+                                      ;
+1 error generated.
+
+

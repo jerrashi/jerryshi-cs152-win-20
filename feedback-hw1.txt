@@ -1,0 +1,143 @@
+;; _total-score_                    98 / 100
+
+;; graded by liuyifan
+;; Week 1 assignment
+;; === automated correctness ===
+;; convert_length			20 / 20
+ centimeters: 0.00 		3 / 3
+ centimeters: 1.00 		4 / 4
+ centimeters: 5.00 		4 / 4
+ centimeters: 0.50 		4 / 4
+ centimeters: 10.50 		4 / 4
+ centimeters: -5.00 		1 / 1
+;; trapezoid_area			25 / 25
+ height: 1, base1: 10, base2: 10 		4 / 4
+ height: 1, base1: 10, base2: 18 		4 / 4
+ height: 2, base1: 10, base2: 18 		5 / 5
+ height: 5, base1: 7, base2: 6 		5 / 5
+ height: 3, base1: 18, base2: 15 		6 / 6
+ height: 0, base1: 18, base2: 15 		1 / 1
+;; print_number_triangle			25 / 25
+Grader comment: Be careful with the \r. We do not need it in this assignment.  
+ start_num: 1 		5 / 5
+Expected
+				  1
+			  1		  1
+		  1		  2		  1
+	  1		  3		  3		  1
+  1		  4		  6		  4		  1
+Actual------
+number triangle: 1
+				  1
+			  1		  1
+		  1		  2		  1
+	  1		  3		  3		  1
+  1		  4		  6		  4		  1
+
+------------
+ start_num: 5 		5 / 5
+Expected
+				  5
+			  5		  5
+		  5		 10		  5
+	  5		 15		 15		  5
+  5		 20		 30		 20		  5
+Actual------
+number triangle: 5
+				  5
+			  5		  5
+		  5		 10		  5
+	  5		 15		 15		  5
+  5		 20		 30		 20		  5
+
+------------
+ start_num: 15 		6 / 6
+Expected
+				 15
+			 15		 15
+		 15		 30		 15
+	 15		 45		 45		 15
+ 15		 60		 90		 60		 15
+Actual------
+number triangle: 15
+				 15
+			 15		 15
+		 15		 30		 15
+	 15		 45		 45		 15
+ 15		 60		 90		 60		 15
+
+------------
+ start_num: 100 		7 / 7
+Expected
+				100
+			100		100
+		100		200		100
+	100		300		300		100
+100		400		600		400		100
+Actual------
+number triangle: 100
+				100
+			100		100
+		100		200		100
+	100		300		300		100
+100		400		600		400		100
+
+------------
+ start_num: 1234 		1 / 1
+Expected
+ERROR (print_number_triangle): Numbers larger than 3 digits not supported
+Actual------
+ERROR (print_number_triangle): Numbers larger than 3 digits not supported
+------------
+ start_num: 200 		1 / 1
+Expected
+ERROR (print_number_triangle): Numbers larger than 3 digits not supported
+Actual------
+ERROR (print_number_triangle): Numbers larger than 3 digits not supported
+------------
+
+ ;; automated_correctness_subtotal_:		70 / 70
+;; ===
+;; partial credit returned via visual inspection - only for
+;; problems on which you earned fewer points than you can get back.
+;; if you got more than 0 points, then the partial credit is scaled.
+;; look at code for grader notes if bugs identified
+
+;; convert_length				/ 2
++2 returns a calculation, but not the right calculation
+
+;; sides to area				/ 4
++4 returns a calculation, but not the right calculation
+
+;; print_number_triangle			/
+?? - Only a spacing error - restore all points but 3
++7 - One of the calculations is wrong consistently
+
+;; if necessary, 10 pt charge for grader manually
+;; getting code to run (as long as it was student error)
+
+;; only for items incorrect in automated grading
+;; manual_correctness_subtotal_:
+
+;; combined_correctness_subtotal_:	     / 70
+
+;; === style ===
+
+;; well-written purposes              5 / 5
+;; proper indentation, line breaks    5 / 5
+;; well-named variables		      5 / 5
+;; adequate tests                     5 / 5
+(3 tests for each function)
+(1 pt for each function's tests)
+;; well-designed tests			4 / 5
+1 pt for making a separate testing function for each
+1 pt for automatically checking the result vs expected (for non-void functions)
+rather than just printing out result and expected
+
+;; === warmup ===
+;; errors.txt				5 / 5
+
+
+-1 more than 80 chars in one line
+
+;; style _subtotal_:		    28 / 30

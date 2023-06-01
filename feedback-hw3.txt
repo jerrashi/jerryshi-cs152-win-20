@@ -1,0 +1,193 @@
+;; _total-score_                   90 / 100
+
+;; Week 3 assignment
+
+;; === automated correctness ===
+
+;; remove_max			6 / 7
+  [1 / 1] check max value {9,5,7,6,2,2,3} 
+  [1 / 1] check max value {6,3,2,2,3,1,7,8} 
+  [1 / 1] check array modification {9,5,7,6,2,2,3} 
+  [1 / 1] check array modification {1,2,3,4,15,6,7,8,9} 
+  [1 / 1] check array modification {1} 
+  [0 / 1] check array modification {1,2,3,14,14,6,7,8} 
+  - Did not correctly remove elements in array
+    array result {1,2,3,14,6,7,8,8} (only care about first 6)
+        expected {1,2,3,6,7,8}
+ --- end of incorrect test case
+  [1 / 1] check array modification {11,2,3,4,5,6,7,11} 
+
+;; init_board			5 / 5
+  [5 / 5] test on empty board 
+
+;; place_piece			8 / 8
+  [2 / 2] board: init_board, row: 0, col: 0 
+  [2 / 2] board: init_board, row: 7, col: 7 
+  [2 / 2] board: init_board, row: 3, col: 6 
+  [1 / 1] board: init_board, row: 2, col: 3 
+  [1 / 1] board: init_board, row: 9, col: 5 
+
+;; area_and_perimeter			6 / 6
+  [3 / 3] height: 3.500000, length: 7.900000, check area 
+  [3 / 3] height: 3.500000, length: 7.900000, check perimeter 
+
+;; remove_max			4 / 4
+  [2 / 2] check update of length parameter {1,2,3,4,15,6,7,8,9} 
+  [2 / 2] check update of length parameter {1,2,3,14,5,14,7,8} 
+
+;; player_won			4 / 10
+  [0 / 2] 'w' wins because 'b' is out of pieces 
+  - check if player 'w' won, result 0, expected 1
+  - Test case board is shown below----
+      0 1 2 3 4 5 6 7 
+    0 * * * * * * * * 
+    1 * * * * * * * * 
+    2 * w * * * * * * 
+    3 * * * * w * * * 
+    4 * * * * * w * * 
+    5 * * w * * * * * 
+    6 * * * * * * * * 
+    7 * * * * * * * * 
+ --- end of test case
+  [0 / 2] 'b' wins because 'w' is out of pieces 
+  - check if player 'b' won, result 0, expected 1
+  - Test case board is shown below----
+      0 1 2 3 4 5 6 7 
+    0 * * * * * * * * 
+    1 * * * * * * * * 
+    2 * * * * * * * * 
+    3 * * * * b * * * 
+    4 * * * B * * * * 
+    5 * * * * b * * * 
+    6 * * * * * * * * 
+    7 * * * * * * * * 
+ --- end of test case
+  [2 / 2] w does not win 
+  [2 / 2] b does not win 
+  [0 / 1] b has no valid moves left 
+  - check if player 'w' won, result 0, expected 1
+  - Test case board is shown below----
+      0 1 2 3 4 5 6 7 
+    0 * * * * * b * b 
+    1 * * * * w * b * 
+    2 * * * w * w * w 
+    3 * * * * w * * * 
+    4 * * * * * * * w 
+    5 * * * * * * * * 
+    6 * * * * * * * * 
+    7 * * * * * * * * 
+ --- end of test case
+  [0 / 1] w has no valid moves left 
+  - check if player 'b' won, result 0, expected 1
+  - Test case board is shown below----
+      0 1 2 3 4 5 6 7 
+    0 * * * * * * * * 
+    1 * b * * * b * * 
+    2 * * b * b * * * 
+    3 * * * w * * * * 
+    4 * * b * b * * * 
+    5 * b * * * b * * 
+    6 * * * * * * * * 
+    7 * * * * * * * * 
+ --- end of test case
+
+;; do_move			24 / 25
+  [1 / 1] start row out of range - check return value 
+  [1 / 1] end col out of range - check return value 
+  [1 / 1] end spot already occupied - check return value 
+  [1 / 1] Trying to hop but no item beneath - check return value 
+  [1 / 1] Trying to hop but wrong colored item beneath - check return value 
+  [1 / 1] moving in the wrong direction - check return value 
+  [1 / 1] end row out of range - check board modification 
+  [1 / 1] starting spot occupied by the wrong color - check board modification 
+  [1 / 1] moving sideways - check board modification 
+  [2 / 2] king able to in opposite direction 
+  [2 / 2] w moves to edge of board 
+  [2 / 2] w moves within middle of board 
+  [2 / 2] b moves within middle of board 
+  [2 / 2] w captures opponent, moves to space in middle of board 
+  [1 / 2] w captures opponent, moves to edge and becomes king 
+    player=w, startrow=2, startcol=3, endrow=0, endcol=5
+    starting board ----
+      0 1 2 3 4 5 6 7 
+    0 * b * b * * * * 
+    1 * * b * b * * * 
+    2 * * * w * b * * 
+    3 * * * * * * w * 
+    4 * b * b * w * * 
+    5 * * w * b * w * 
+    6 * w * * * w * * 
+    7 w * w * w * * * 
+  - [ok] return value is correct
+  - You did not correctly modify the board.
+    Result ---        | Expected ---
+      0 1 2 3 4 5 6 7 |   0 1 2 3 4 5 6 7 
+    0 * b * b * w * * | 0 * b * b * W * * 
+    1 * * b * * * * * | 1 * * b * * * * * 
+    2 * * * * * b * * | 2 * * * * * b * * 
+    3 * * * * * * w * | 3 * * * * * * w * 
+    4 * b * b * w * * | 4 * b * b * w * * 
+    5 * * w * b * w * | 5 * * w * b * w * 
+    6 * w * * * w * * | 6 * w * * * w * * 
+    7 w * w * w * * * | 7 w * w * w * * * 
+  --- end of test case
+  [2 / 2] b captures opponent, moves to space in middle of board 
+  [2 / 2] b captures opponent, moves to edge 
+
+;; computer_move			10 / 10
+  [2 / 2] initial board 
+  [2 / 2] random board with several available moves 
+  [2 / 2] random board with several available moves 
+  [2 / 2] random board with one available move 
+  [2 / 2] random board with one available move 
+
+;; automated_correctness_subtotal_:		67 / 75
+
+;; ===
+;; partial credit returned via visual inspection - only for
+;; problems on which you earned fewer points than you can get back.
+;; if you got more than 0 points, then the partial credit is scaled.
+;; look at code for grader notes if bugs identified
+
+;; remove_max
+
+;; init_board
++2 Some off-by-one error, where it looks the same but is slightly off
+
+;; place_piece
++5 - off-by-one on the row/col or swapping row/col
+
+;; area_and_perimeter
++2 for calculations but storing memory incorrectly
+
+;; if necessary, 10 pt charge for grader manually
+;; getting code to run (as long as it was student error)
+
+;; only for items incorrect in automated grading
+;; manual_correctness_subtotal_:	     /
+
+;; combined_correctness_subtotal_:	    67 / 75
+
+;; === style ===
+
+;; well-written purposes             4 / 4
+;; proper indentation, line breaks   2 / 4
+Grader comments: -2 for lines > 80 characters
+
+;; well-named variables		     4 / 4
+(i, j, k okay for simple loop counters. Meaningful names for others.)
+;; adequate tests                    8 / 8
+(for each function, tests that exercise pertinent functionality and error conditions)
+
+;; === efficiency ===
+;; good decisions for control structures 5 / 5
+ -2 if any inappropriate control structure (if/else where switch should have been)
+ -2 if any repeated function calls with same input and same result
+
+;; === problem-specific requirements ===
+;; Remove points from correctness testing if they don't use recursion when specified.
+;; This refers to the recursive problems
+
+;; style _subtotal_:		   23 / 25
+
+;; graded by miaohe
